@@ -23,6 +23,25 @@ exports.getPage = async (req,res) => {
     };
 };
 
+exports.create = async (req,res) => {
+    return res.render('catways/create')
+}
+
+exports.add = async (req,res) => {
+    const newCatway= {
+        catwayNumber:req.body.catwayNumber,
+        catwayType:req.body.catwayType,
+        catwayState:req.body.catwayState
+    }
+    console.log(newCatway)
+    try {
+        const catway =await service.add(newCatway)
+        return res.redirect('/catways/page/'+catway._id)
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
+    }
+}
+
 exports.updateState = async (req,res) => {
     const id = req.params.id
     const newState = req.body.catwayState
@@ -39,20 +58,18 @@ exports.updateState = async (req,res) => {
     }
 }
 
-exports.create = async (req,res) => {
-    return res.render('catways/create')
-}
 
-exports.add = async (req,res) => {
-    const newCatway= {
-        catwayNumber:req.body.catwayNumber,
-        catwayType:req.body.catwayType,
-        catwayState:req.body.catwayState
-    }
-    console.log(newCatway)
+
+exports.delete = async (req,res) => {
+    const id = req.params.id
     try {
-        const catway =await service.add(newCatway)
-        return res.redirect('/catways/page/'+catway._id)
+        const catway = await service.getOneById(id)
+        if (!catway){
+            return res.render('error', {message:"Catway Not Found",error:{status:404}});
+        }
+        await service.delete(id)
+        return res.redirect('/catways/list')
+
     } catch (error) {
         return res.render('error',{message:error.message,error:error})
     }
