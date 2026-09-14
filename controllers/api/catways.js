@@ -52,3 +52,17 @@ exports.updateState = async (req,res) => {
         return res.status(500).json(error)
     }
 }
+
+exports.delete = async (req,res) => {
+    const id = req.params.id
+    try {
+        const catway = await service.getOneById(id)
+        if (!catway){
+            return res.status(404).json({message:"catway not found"})
+        }
+        await service.delete(id)
+        return res.status(204)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
