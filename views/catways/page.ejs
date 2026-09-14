@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Catway N° <%= catway.catwayNumber %></title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <h2>Catway N° <%= catway.catwayNumber %></h2>
+        <strong>Type : </strong> 
+        <span>
+            <% if (catway.catwayType==="short") { %>
+                Court
+            <% } else if (catway.catwayType==="long") { %>
+                Long
+            <% } %>
+        </span><br>
+        <form action="/catways/<%= catway._id %>" method="POST">
+            <label for="catwayState">Etat</label><br>
+            <textarea name="catwayState" id="catwayState"><%= catway.catwayState %></textarea>
+            <br>
+            <input type="submit" value="Modifier">
+        </form>
+
+        <section>
+            <h2>Réservations :</h2>
+            <!-- Insérez Liste des Réservations du Catway ici. -->
+        </section>
+    </body>
+  </html>
