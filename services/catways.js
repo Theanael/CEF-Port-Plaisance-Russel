@@ -14,3 +14,8 @@ exports.add = async (newCatway) => {
     const catway=await Catway.create(newCatway);
     return catway;
 }
+
+exports.updateState = async (id,newState) => {
+    const catway=await Catway.updateOne({_id:id,},{catwayState:newState})
+    return;
+}
