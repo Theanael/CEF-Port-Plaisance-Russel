@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nouveau Catway</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <form action="/catways/add" method="POST">
+            <label for="catwayNumber">Numéro</label>
+            <input type="text" name="catwayNumber" id="catwayNumber"><br>
+            <label for="catwayType">Type</label>
+            <select name="catwayType" id="catwayType">
+                <option value=""></option>
+                <option value="short">Court</option>
+                <option value="long">Long</option>
+            </select><br>
+            <label for="catwayState">Etat</label><br>
+            <textarea name="catwayState" id="catwayState"></textarea>
+            <br>
+            <input type="submit" value="Créer">
+        </form>
+    </body>
+  </html>

@@ -1,0 +1,18 @@
+<tr>
+    <td>
+        <a href="page/<%= catway._id %>">Catway n° <%= catway.catwayNumber %></a>
+    </td>
+    <td>
+        <% if (catway.catwayType==="short") { %>
+            Court
+        <% } else if (catway.catwayType==="long") { %>
+            Long
+        <% } %>
+    </td>
+    <td>
+        <%= catway.catwayState %>
+    </td>
+    <td>
+        <a href="delete/<%= catway._id %>">Supprimer</a>
+    </td>
+</tr>
