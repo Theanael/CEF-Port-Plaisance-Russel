@@ -11,3 +11,8 @@ exports.getAllByCatway = async (catwayNumber) => {
     const reservations = Reservation.find({catwayNumber:catwayNumber});
     return reservations;
 }
+
+exports.getOneById = async (id) => {
+    const reservation = Reservation.findById(id);
+    return reservation;
+}
