@@ -21,3 +21,8 @@ exports.add = async (newReservation) => {
     const reservation = Reservation.create(newReservation);
     return(reservation)
 }
+
+exports.update = async (id,changes) => {
+    await Reservation.updateOne({_id:id},changes)
+    return;
+}
