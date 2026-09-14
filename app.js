@@ -1,10 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const mongodb = require('./db/mongo')
+
+mongodb.initClientDbConnection()
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
