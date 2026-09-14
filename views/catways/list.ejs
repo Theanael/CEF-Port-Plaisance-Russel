@@ -18,8 +18,12 @@
             <tbody>
                 <% catways.forEach(catway => { %>
                     <%- include('line',{catway}) %>
-                    
-                    <% }) %>
+                <% }) %>
+                <tr>
+                    <td>
+                        <a href="./create">Créer un catway</a>
+                    </td>
+            </tr>
             </tbody>
                 
         </table>

@@ -35,6 +35,25 @@ exports.updateState = async (req,res) => {
         return res.redirect('/catways/page/'+id)
 
     } catch (error) {
-        return res.render('error',{error:error})
+        return res.render('error',{message:error.message,error:error})
+    }
+}
+
+exports.create = async (req,res) => {
+    return res.render('catways/create')
+}
+
+exports.add = async (req,res) => {
+    const newCatway= {
+        catwayNumber:req.body.catwayNumber,
+        catwayType:req.body.catwayType,
+        catwayState:req.body.catwayState
+    }
+    console.log(newCatway)
+    try {
+        const catway =await service.add(newCatway)
+        return res.redirect('/catways/page/'+catway._id)
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
     }
 }
