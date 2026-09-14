@@ -16,6 +16,11 @@ exports.add = async (newCatway) => {
 }
 
 exports.updateState = async (id,newState) => {
-    const catway=await Catway.updateOne({_id:id,},{catwayState:newState})
+    await Catway.updateOne({_id:id},{catwayState:newState})
+    return;
+}
+
+exports.delete = async (id) => {
+    await Catway.deleteOne({_id:id})
     return;
 }
