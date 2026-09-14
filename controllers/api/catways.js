@@ -21,3 +21,19 @@ exports.getOneById = async (req,res) => {
         return res.status(500).json(error)
     }
 }
+
+exports.add = async (req,res) => {
+
+    const newCatway= {
+        catwayNumber:req.body.catwayNumber,
+        catwayType:req.body.catwayType,
+        catwayState:req.body.catwayState
+    }
+
+    try {
+        const catway =await service.add(newCatway)
+        return res.status(200).json(catway)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
