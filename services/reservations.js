@@ -16,3 +16,8 @@ exports.getOneById = async (id) => {
     const reservation = Reservation.findById(id);
     return reservation;
 }
+
+exports.add = async (newReservation) => {
+    const reservation = Reservation.create(newReservation);
+    return(reservation)
+}
