@@ -19,10 +19,15 @@ exports.getOneById = async (id) => {
 
 exports.add = async (newReservation) => {
     const reservation = Reservation.create(newReservation);
-    return(reservation)
+    return reservation;
 }
 
 exports.update = async (id,changes) => {
-    await Reservation.updateOne({_id:id},changes)
+    await Reservation.updateOne({_id:id},changes);
+    return;
+}
+
+exports.delete = async(id) => {
+    await Reservation.deleteOne({_id:id});
     return;
 }
