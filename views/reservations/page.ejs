@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Réservation</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <form action="/catways/<%= catway._id %>/reservations/<%= reservation._id %>" method="POST">
+
+            <label for="clientName">Client : </label>
+            <input type="text" name="clientName" id="clientName" value="<%= reservation.clientName %>"><br>
+            <label for="boatName">Bateau : </label>
+            <input type="text" name="boatName" id="boatName" value="<%= reservation.boatName %>"><br>
+            <span>Catway : <%= reservation.catwayNumber %></span><br>
+            <span>Période : </span>
+            <label for="startDate">Du :</label>
+            <input type="datetime-local" name="startDate" id="startDate" value="<%= new Date(reservation.startDate).toISOString().substring(0,19) %>">
+            <label for="endDate">Au :</label>
+            <input type="datetime-local" name="endDate" id="endDate" value="<%= new Date(reservation.endDate).toISOString().substring(0,19) %>"><br>
+            <input type="submit" value="Modifier">
+            
+        </form>
+    </body>
+  </html>

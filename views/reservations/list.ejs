@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Bateau</th>
+            <% if (withCatwayNumer) { %>
+                <th>Catway</th>
+            <% } %>
+            <th>Début</th>
+            <th>Fin</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% reservations.forEach(reservation => { %>
+            <%- include('line',{reservation:reservation, withCatwayNumer:withCatwayNumer}) %>
+        <% }) %>
+        <tr>
+            <td colspan="2">
+                <a href="/catways/<%= catway._id %>/reservations/create">Créer une réservation</a>
+            </td>
+    </tr>
+    </tbody>
+        
+</table>
