@@ -40,7 +40,7 @@ exports.add = async (req,res) => {
     console.log(newCatway)
     try {
         const catway =await service.add(newCatway)
-        return res.redirect('/catways/page/'+catway._id)
+        return res.redirect('/catways/'+catway._id+'/page')
     } catch (error) {
         return res.render('error',{message:error.message,error:error})
     }
@@ -55,7 +55,7 @@ exports.updateState = async (req,res) => {
             return res.render('error', {message:"Catway Not Found",error:{status:404}});
         }
         await service.updateState(id,newState)
-        return res.redirect('/catways/page/'+id)
+        return res.redirect('/catways/'+id)+'/page'
 
     } catch (error) {
         return res.render('error',{message:error.message,error:error})
