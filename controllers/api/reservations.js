@@ -98,9 +98,35 @@ exports.update = async (req,res) => {
             return res.status(404).json({message:"reservation not found"})
         }
 
-        // On modifie la réservation puis on notifie l'utilisateur du succès de l'
+        // On modifie la réservation puis on notifie l'utilisateur du succès de l'opération
         await reservationService.update(reservationId,changes);
-        return res.status(201).json({message:"Reservation Updated"})
+        return res.status(200).json({message:"Reservation Updated"})
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+
+}
+
+exports.delete = async (req,res) => {
+    const catwayId=req.params.id
+    const reservationId=req.params.idReservation
+
+    try {
+        // on vérifie que le catway existe et on le récupère
+        const catway = await catwayService.getOneById(catwayId);
+        if (!catway){
+            return res.status(404).json({message:"catway not found"})
+        }
+
+        // on vérifie que la réservation existe et est dans le bon catway
+        const reservation = await reservationService.getOneById(reservationId);
+        if (!reservation || reservation.catwayNumber!=catway.catwayNumber){
+            return res.status(404).json({message:"reservation not found"})
+        }
+
+        // On supprime la réservation puis on notifie l'utilisateur du succès de l'opération
+        await reservationService.delete(reservationId);
+        return res.status(204)
     } catch (error) {
         return res.status(500).json(error)
     }
