@@ -5,7 +5,7 @@
         <link rel='stylesheet' href='/css/style.css' />
     </head>
     <body>
-        <form action="./update" method="POST">
+        <form action="/catways/<%= catway._id %>/reservations/<%= reservation._id %>" method="POST">
 
             <label for="clientName">Client : </label>
             <input type="text" name="clientName" id="clientName" value="<%= reservation.clientName %>"><br>
