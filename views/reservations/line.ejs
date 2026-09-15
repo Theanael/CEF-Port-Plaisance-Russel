@@ -1,0 +1,23 @@
+<tr>
+    <td>
+        <%= reservation.clientName %>
+    </td>
+    <td>
+        <%= reservation.boatName %>
+    </td>
+    <% if (withCatwayNumer) { %>
+     <td><%= reservation.catwayNumber %></td>
+    <% } %>
+    <td>
+        <%= reservation.startDate.toLocaleString() %>
+    </td>
+    <td>
+        <%= reservation.endDate.toLocaleString() %>
+    </td>
+    <td>
+        <a href="">Modifier</a>
+    </td><td>
+        <a href="">Supprimer</a>
+    </td>
+   
+</tr>
