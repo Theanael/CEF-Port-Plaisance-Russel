@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liste des Catways</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+    
+        <h2>Liste des Catways</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom d'Utilisateur</th>
+                    <th>E-Mail</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% users.forEach(user => { %>
+                <%- include('line',{user:user}) %>
+               <% }) %>
+                <tr>
+                    <td>
+                        <a href="./create">Créer un utilisateur</a>
+                    </td>
+                </tr>
+            </tbody>
+                
+        </table>
+    </body>
+  </html>
