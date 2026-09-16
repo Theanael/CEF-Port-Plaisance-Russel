@@ -4,7 +4,7 @@ const router = express.Router();
 const APIcontroller = require('../controllers/api/catways');
 const dashboardController = require('../controllers/dashboard/catways');
 
-const reservationRoute= require('../routes/reservation')
+const reservationRoute= require('./reservations')
 
 // Dashboard Routes
 router.get('/list',dashboardController.getList);
