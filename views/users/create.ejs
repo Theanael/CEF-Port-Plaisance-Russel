@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nouvel Utilisateur</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <h2>Nouvel Utilisateur</h2>
+        <form action="/users/add" method="POST">
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" id="email"><br>
+
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" name="username" id="username" ><br>
+
+            <label for="password">Mot de Passe</label>
+            <input type="password" name="password" id="password"><br>
+            
+            <input type="submit" value="Créer">
+
+        </form>
+    </body>
+  </html>

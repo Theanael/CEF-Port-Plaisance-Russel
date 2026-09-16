@@ -27,3 +27,24 @@ exports.getPage = async (req,res) => {
         return res.render('error',{message:error.message,error:error})
     };
 };
+
+exports.create = async (req,res) => {
+    // on affiche le formulaire de création
+    return res.render('users/create')
+}
+
+exports.add = async (req,res) => {
+    const newUser= {
+        username:req.body.username,
+        email:req.body.email,
+        password:req.body.password
+    }
+
+    try {
+        // on crée l'utilisateur et on redirige vers sa page
+        const user = await service.add(newUser)
+        return res.redirect('/users/'+user._id+'/page')
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
+    }
+}
