@@ -48,3 +48,25 @@ exports.add = async (req,res) => {
         return res.render('error',{message:error.message,error:error})
     }
 }
+
+exports.update = async (req,res) => {
+    const id = req.params.id
+    const changes = {
+        username:req.body.username,
+        password:req.body.password
+    }
+    try {
+        // on vérifie que l'utilisateur existe
+        const user = await service.getOneById(id)
+        if (!user){
+            return res.render('error', {message:"User Not Found",error:{status:404}});
+        }
+
+        // on applique les changements et on recharge la page
+        await service.update(id,changes)
+        return res.redirect('/users/'+id+'/page')
+
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
+    }
+}
