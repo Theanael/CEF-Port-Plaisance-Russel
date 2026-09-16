@@ -9,3 +9,8 @@ exports.getOneById = async (id) => {
     const user = User.findById(id);
     return user;
 }
+
+exports.add = async (newUser) => {
+    const user = User.create(newUser);
+    return user;
+}
