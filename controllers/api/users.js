@@ -56,3 +56,17 @@ exports.update = async (req,res) => {
         return res.status(500).json(error)
     }
 }
+
+exports.delete = async (req,res) => {
+    const id = req.params.id
+    try {
+        const user = await service.getOneById(id)
+        if (!user){
+            return res.status(404).json({message:"user not found"})
+        }
+        await service.delete(id);
+        return res.status(204).json({})
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
