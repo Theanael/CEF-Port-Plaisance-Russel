@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 
+const private = require('../middleware/private')
+
 const APIController = require('../controllers/api/users');
 const dashboardController = require('../controllers/dashboard/users')
 
@@ -14,9 +16,10 @@ router.post('/:id',dashboardController.update)
 router.get('/:id/delete',dashboardController.delete)
 
 // API Routes
-router.get('/', APIController.getAll);
-router.get('/:id',APIController.getOneById)
-router.post('/',APIController.add)
-router.put('/:id',APIController.update)
-router.delete('/:id',APIController.delete)
+router.get('/',private.checkJWT, APIController.getAll);
+router.get('/:id',private.checkJWT, APIController.getOneById)
+router.post('/',private.checkJWT, APIController.add)
+router.put('/:id',private.checkJWT, APIController.update)
+router.delete('/:id',private.checkJWT, APIController.delete)
+
 module.exports = router;

@@ -1,5 +1,5 @@
 const service = require('../../services/users')
-
+const jwt = require('jsonwebtoken');
 
 exports.getAll = async (req,res) => {
     try {
@@ -68,5 +68,25 @@ exports.delete = async (req,res) => {
         return res.status(204).json({})
     } catch (error) {
         return res.status(500).json(error)
+    }
+}
+
+
+exports.login = async (req,res) => {
+    const email=req.body.email
+    const password=req.body.password
+
+    try {
+        const user = service.authenticate(email,password);
+        const token = jwt.sign(
+            {user: user},
+            process.env.SECRET_KEY,
+            {expiresIn: '24h'}
+        );
+        res.header('Authorization','Bearer '+token);
+        return res.status(200).json('authenticate_succed');
+        
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
     }
 }

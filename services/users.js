@@ -1,5 +1,7 @@
 const User = require('../models/users');
 
+const bcrypt = require('bcrypt')
+
 exports.getAll = async () => {
     const users = await User.find();
     return users;
@@ -32,3 +34,24 @@ exports.delete = async(id)=> {
     await User.deleteOne({_id:id});
     return;
 }
+
+exports.authenticate = async (email, password) => {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+        throw new Error('Email ou mot de passe incorrect');
+    }
+
+    const valid = await bcrypt.compare(password, user.password);
+
+    if (!valid) {
+        throw new Error('Email ou mot de passe incorrect');
+    }
+
+    const userData={
+        username:user.username,
+        email:user.email
+    }
+
+    return userData;
+};
