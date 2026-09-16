@@ -70,3 +70,21 @@ exports.update = async (req,res) => {
         return res.render('error',{message:error.message,error:error})
     }
 }
+
+exports.delete = async (req,res) => {
+    const id = req.params.id
+    try {
+        // on vérifie que l'utilisateur existe
+        const user = await service.getOneById(id)
+        if (!user){
+            return res.render('error', {message:"Catway Not Found",error:{status:404}});
+        }
+        
+        // on supprime l'utilisateur et on reviens à la liste des utilisateurs
+        await service.delete(id)
+        return res.redirect('/users/list')
+
+    } catch (error) {
+        return res.render('error',{message:error.message,error:error})
+    }
+}
