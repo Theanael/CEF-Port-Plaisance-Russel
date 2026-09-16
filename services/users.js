@@ -5,4 +5,7 @@ exports.getAll = async () => {
     return users;
 }
 
-exports
+exports.getOneById = async (id) => {
+    const user = User.findById(id);
+    return user;
+}
