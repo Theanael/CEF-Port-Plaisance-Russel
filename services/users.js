@@ -27,3 +27,8 @@ exports.update = async(id,changes)=> {
         await user.save();
     }
 }
+
+exports.delete = async(id)=> {
+    await User.deleteOne({_id:id});
+    return;
+}
