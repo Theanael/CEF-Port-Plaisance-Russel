@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const private = require('../middleware/private')
+
 const APIcontroller = require('../controllers/api/catways');
 const dashboardController = require('../controllers/dashboard/catways');
 
@@ -16,12 +18,13 @@ router.post('/:id',dashboardController.updateState);
 
 
 // API Routes
-router.get('/',APIcontroller.getAll);
-router.get('/:id',APIcontroller.getOneById);
-router.post('/',APIcontroller.add);
-router.put('/:id',APIcontroller.updateState);
-router.delete('/:id',APIcontroller.delete);
+router.get('/',private.checkJWT,APIcontroller.getAll);
+router.get('/:id',private.checkJWT,APIcontroller.getOneById);
+router.post('/',private.checkJWT,APIcontroller.add);
+router.put('/:id',private.checkJWT,APIcontroller.updateState);
+router.delete('/:id',private.checkJWT,APIcontroller.delete);
 
+// Reservations Routes
 router.use('/:id/reservations',reservationRoute)
 
 module.exports = router;
