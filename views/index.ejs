@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+    <head>
+        <title>Port de Plaisance Russel</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+      <header>
+        <h1>Port de Plaisance Russel</h1>
+        <nav>
+          <a href="/catways/list">Catways</a>
+          <a href="/users/list">Utilisateurs</a>
+          <a href="">Documentation</a> 
+          <a href="/users/logout">Se déconnecter</a>
+        </nav>
+      </header>
+      <main>
+          <h2>Informations</h2>
+          <div>Date : <%= new Date().toLocaleDateString() %></div>
+          <div>User : <%= user.username %>(<%= user.email %>)</div>
+          
+        
+        </section>
+        <section>
+          <h2>Réservations en cours</h2>
+          <%- include('reservations/list', {reservations:reservations, withCatwayNumer:true, withActions:false}) %>
+
+        </section>
+
+      </main>
+    </body>
+  </html>

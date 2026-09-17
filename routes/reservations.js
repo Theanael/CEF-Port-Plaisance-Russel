@@ -8,11 +8,11 @@ const dashboardController = require('../controllers/dashboard/reservations')
 
 
 // Dashboard Routes
-router.get('/create',dashboardController.create)
-router.post('/add',dashboardController.add)
-router.get('/:idReservation/page',dashboardController.getPage)
-router.post('/:idReservation',dashboardController.update)
-router.get('/:idReservation/delete',dashboardController.delete)
+router.get('/create',private.checkCookie,dashboardController.create)
+router.post('/add',private.checkCookie,dashboardController.add)
+router.get('/:idReservation/page',private.checkCookie,dashboardController.getPage)
+router.post('/:idReservation',private.checkCookie,dashboardController.update)
+router.get('/:idReservation/delete',private.checkCookie,dashboardController.delete)
 
 // API Routes
 router.get('/',private.checkJWT,APIController.getAllByCatway)

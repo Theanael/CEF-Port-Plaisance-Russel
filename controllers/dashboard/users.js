@@ -88,3 +88,24 @@ exports.delete = async (req,res) => {
         return res.render('error',{message:error.message,error:error})
     }
 }
+
+exports.login = async(req,res) => {
+    const email=req.body.email;
+    const password=req.body.password;
+
+    try {
+        const user = await service.authenticate(email,password);
+        console.log(res.ression)
+        req.session.user = user
+        res.redirect('/')
+        
+    } catch (error) {
+        return res.render('loginPage',{message:error.message,error:error})
+    }
+}
+
+exports.logout = async(req,res) => {
+    delete req.session.user;
+    res.redirect('/')
+    
+}

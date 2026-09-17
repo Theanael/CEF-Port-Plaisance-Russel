@@ -31,21 +31,10 @@ exports.checkJWT = async (req,res, next) =>{
     }
 }
 
-/**
- * Vérifie qu'un utilisateur est authentifié via une session.
- * Sinon, l'utilisateur est redirigé vers la page de connexion.
- *
- * @param {Request} req Requête HTTP Express.
- * @param {Response} res Réponse HTTP Express.
- * @param {NextFunction} next Fonction permettant de passer au middleware suivant.
- * @returns {void}
- */
-
-
 exports.checkCookies = async (req,res,next) => {
     if (req.session.user) {
         next()
     } else {
-        res.render('login')
+        return res.render('login')
     }
 }
