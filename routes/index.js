@@ -10,7 +10,7 @@ const userRoutes = require('./users')
 const homeController =require('../controllers/dashboard/home')
 
 /* GET home page. */
-router.get('',homeController.getHome)
+router.get('',private.checkCookie,homeController.getHome)
 
 router.post('/login',userAPIController.login)
 
