@@ -7,11 +7,10 @@ const userAPIController= require('../controllers/api/users')
 
 const catwayRoutes= require('./catways')
 const userRoutes = require('./users')
+const homeController =require('../controllers/dashboard/home')
 
 /* GET home page. */
-router.get('/',private.checkJWT, function(req, res) {
-  res.render('index', { title: 'Express' });
-});
+router.get('',homeController.getHome)
 
 router.post('/login',userAPIController.login)
 
