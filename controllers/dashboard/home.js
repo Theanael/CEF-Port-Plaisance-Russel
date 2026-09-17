@@ -13,3 +13,6 @@ exports.getHome = async (req,res) => {
     }
 }
 
+exports.getLoginPage = async (req,res) => {
+    return res.render('loginPage');
+}

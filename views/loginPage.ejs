@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Port de Plaisance Russel</title>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+      <header>
+        <h1>Port de Plaisance Russel</h1>
+      </header>
+      <main>
+          <section>
+                <h2>A Propos de cette Application</h2>
+                <div>
+                    L’application web de gestion du port de plaisance de
+                    Russell permet à la capitainerie de gérer de manière
+                    centralisée les catways, les réservations et les
+                    utilisateurs de la plateforme.
+                </div>
+          </section>
+          <section>
+            <h2>Documentation</h2>
+            <div>La documentation de l'API est disponible <a href="#">ici</a></div>
+          </section>
+          <section>
+            <h2>Connexion</h2>
+            <form action="users/login" method="post">
+                <label for="email">Nom d'Utilisateur</label>
+                <input type="email" name="email" id="email"><br>
+
+                <label for="password">Mot de Passe</label>
+                <input type="password" name="password" id="password"><br>
+
+                <input type="submit" value="Se connecter">
+            </form>
+          </section>
+      </main>
+    </body>
+  </html>
