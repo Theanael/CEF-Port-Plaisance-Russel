@@ -4,21 +4,40 @@
         <title>Nouvelle Réservation</title>
         <link rel='stylesheet' href='/css/style.css' />
     </head>
-    <body>
+    <body>        <header>
+            <h1>Port de Plaisance Russel</h1>
+            <a href="/users/list">Retour</a>
+        </header>
+        <main>
         <form action="./add" method="POST">
-
-            <label for="clientName">Client : </label>
-            <input type="text" name="clientName" id="clientName"><br>
-            <label for="boatName">Bateau : </label>
-            <input type="text" name="boatName" id="boatName"><br>
-            <span>Catway : <%= catway.catwayNumber %></span><br>
-            <span>Période : </span>
-            <label for="startDate">Du :</label>
-            <input type="datetime-local" name="startDate" id="startDate">
-            <label for="endDate">Au :</label>
-            <input type="datetime-local" name="endDate" id="endDate"><br>
+            <div>
+                <label for="clientName">Client : </label>
+                <input type="text" name="clientName" id="clientName">
+            </div>
+            <div>
+                <label for="boatName">Bateau : </label>
+                <input type="text" name="boatName" id="boatName">
+            </div>
+            <div>
+                <span>Catway :</span> 
+                <span>
+                    <%= catway.catwayNumber %>
+                </span>
+            </div>
+            <div>
+                <span>Période : </span>
+                <span>
+                    <label for="startDate">Du :</label>
+                    <input type="datetime-local" name="startDate" id="startDate">
+                </span>
+                <span>
+                    <label for="endDate">Au :</label>
+                    <input type="datetime-local" name="endDate" id="endDate">
+                </span>
+            </div>
             <input type="submit" value="Créer">
             
         </form>
+        </main>
     </body>
   </html>

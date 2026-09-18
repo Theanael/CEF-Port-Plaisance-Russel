@@ -5,27 +5,32 @@
         <link rel='stylesheet' href='/css/style.css' />
     </head>
     <body>
-    
-        <h2>Liste des Catways</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Numéro</th>
-                    <th>Type</th>
-                    <th>Etat</th>
+            <header>
+            <h1>Port de Plaisance Russel</h1>
+            <a href="/">Retour</a>
+        </header>
+        <main>
+            <h2>Liste des Catways</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Numéro</th>
+                        <th>Type</th>
+                        <th>Etat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% catways.forEach(catway => { %>
+                        <%- include('line',{catway}) %>
+                    <% }) %>
+                    <tr>
+                        <td>
+                            <a href="./create">Créer un catway</a>
+                        </td>
                 </tr>
-            </thead>
-            <tbody>
-                <% catways.forEach(catway => { %>
-                    <%- include('line',{catway}) %>
-                <% }) %>
-                <tr>
-                    <td>
-                        <a href="./create">Créer un catway</a>
-                    </td>
-            </tr>
-            </tbody>
-                
-        </table>
+                </tbody>
+                    
+            </table>
+        </main>
     </body>
   </html>

@@ -5,25 +5,37 @@
         <link rel='stylesheet' href='/css/style.css' />
     </head>
     <body>
-        <h2>Catway N° <%= catway.catwayNumber %></h2>
-        <strong>Type : </strong> 
-        <span>
-            <% if (catway.catwayType==="short") { %>
-                Court
-            <% } else if (catway.catwayType==="long") { %>
-                Long
-            <% } %>
-        </span><br>
-        <form action="/catways/<%= catway._id %>" method="POST">
-            <label for="catwayState">Etat</label><br>
-            <textarea name="catwayState" id="catwayState"><%= catway.catwayState %></textarea>
-            <br>
-            <input type="submit" value="Modifier">
-        </form>
+        <header>
+            <h1>Port de Plaisance Russel</h1>
+            <a href="/catways/list">Retour</a>
+        </header>
+        <main>
+            <h2>Catway N° <%= catway.catwayNumber %></h2>
+            <form action="/catways/<%= catway._id %>" method="POST">
+                <div>
+    
+                    <span>Type : </span> 
+                    <span>
+                        <% if (catway.catwayType==="short") { %>
+                            Court
+                        <% } else if (catway.catwayType==="long") { %>
+                            Long
+                        <% } %>
+                    </span>
+                </div>
+                <div>
+                    <label for="catwayState">Etat</label>
+                    <textarea name="catwayState" id="catwayState"><%= catway.catwayState %></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="Modifier">
+                </div>
+            </form>
 
-        <section>
-            <h2>Réservations :</h2>
-            <%- include('../reservations/list' ,{reservations:reservations, withCatwayNumer:false}) %>
-        </section>
+            <section>
+                <h2>Réservations :</h2>
+                <%- include('../reservations/list' ,{reservations:reservations, withCatwayNumer:false, withActions:true}) %>
+            </section>
+        </main>
     </body>
   </html>
