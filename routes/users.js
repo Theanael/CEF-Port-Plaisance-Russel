@@ -8,18 +8,20 @@ const dashboardController = require('../controllers/dashboard/users')
 
 
 // Dashboard Routes
-router.get('/list',dashboardController.getList);
-router.get('/:id/page',dashboardController.getPage);
-router.get('/create',dashboardController.create)
-router.post('/add',dashboardController.add)
-router.post('/:id',dashboardController.update)
-router.get('/:id/delete',dashboardController.delete)
+router.post('/login',dashboardController.login);
+router.get('/logout',dashboardController.logout)
+router.get('/list',private.checkCookie,dashboardController.getList);
+router.get('/create',private.checkCookie,dashboardController.create);
+router.post('/add',private.checkCookie,dashboardController.add);
+router.get('/:email/page',private.checkCookie,dashboardController.getPage);
+router.post('/:email',private.checkCookie,dashboardController.update);
+router.get('/:email/delete',private.checkCookie,dashboardController.delete);
 
 // API Routes
 router.get('/',private.checkJWT, APIController.getAll);
-router.get('/:id',private.checkJWT, APIController.getOneById)
-router.post('/',private.checkJWT, APIController.add)
-router.put('/:id',private.checkJWT, APIController.update)
-router.delete('/:id',private.checkJWT, APIController.delete)
+router.get('/:email',private.checkJWT, APIController.getOneByEmail);
+router.post('/',private.checkJWT, APIController.add);
+router.put('/:email',private.checkJWT, APIController.update);
+router.delete('/:email',private.checkJWT, APIController.delete);
 
 module.exports = router;

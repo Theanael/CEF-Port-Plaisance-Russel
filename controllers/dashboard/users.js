@@ -12,11 +12,11 @@ exports.getList = async (req,res) => {
 };
 
 exports.getPage = async (req,res) => {
-    const id = req.params.id
+    const email = req.params.email
     
     try {
         /// on vérifie que l'utilisateur existe et on le récupère
-        const user = await service.getOneById(id);
+        const user = await service.getOneByEmail(email);
         if (!user) {
             return res.render('error', {message:"User Not Found",error:{status:404}});
         };
@@ -43,28 +43,29 @@ exports.add = async (req,res) => {
     try {
         // on crée l'utilisateur et on redirige vers sa page
         const user = await service.add(newUser)
-        return res.redirect('/users/'+user._id+'/page')
+        return res.redirect('/users/'+user.email+'/page')
     } catch (error) {
         return res.render('error',{message:error.message,error:error})
     }
 }
 
 exports.update = async (req,res) => {
-    const id = req.params.id
+    console.log("boop")
+    const email = req.params.email
     const changes = {
         username:req.body.username,
         password:req.body.password
     }
     try {
         // on vérifie que l'utilisateur existe
-        const user = await service.getOneById(id)
+        const user = await service.getOneByEmail(email)
         if (!user){
             return res.render('error', {message:"User Not Found",error:{status:404}});
         }
 
         // on applique les changements et on recharge la page
-        await service.update(id,changes)
-        return res.redirect('/users/'+id+'/page')
+        await service.update(email,changes);
+        return res.redirect('/users/'+email+'/page');
 
     } catch (error) {
         return res.render('error',{message:error.message,error:error})
@@ -72,16 +73,16 @@ exports.update = async (req,res) => {
 }
 
 exports.delete = async (req,res) => {
-    const id = req.params.id
+    const email = req.params.email
     try {
         // on vérifie que l'utilisateur existe
-        const user = await service.getOneById(id)
+        const user = await service.getOneByEmail(email)
         if (!user){
             return res.render('error', {message:"Catway Not Found",error:{status:404}});
         }
         
         // on supprime l'utilisateur et on reviens à la liste des utilisateurs
-        await service.delete(id)
+        await service.delete(email)
         return res.redirect('/users/list')
 
     } catch (error) {
@@ -95,7 +96,6 @@ exports.login = async(req,res) => {
 
     try {
         const user = await service.authenticate(email,password);
-        console.log(res.ression)
         req.session.user = user
         res.redirect('/')
         

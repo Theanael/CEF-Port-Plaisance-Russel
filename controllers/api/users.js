@@ -10,10 +10,10 @@ exports.getAll = async (req,res) => {
     }
 }
 
-exports.getOneById = async (req,res) => {
-    const id = req.params.id
+exports.getOneByEmail = async (req,res) => {
+    const email = req.params.email
     try {
-        const user = await service.getOneById(id)
+        const user = await service.getOneByEmail(email)
         if (!user){
             return res.status(404).json({message:"user not found"})
         }
@@ -38,18 +38,18 @@ exports.add = async (req,res) => {
 }
 
 exports.update = async (req,res) => {
-    const id = req.params.id
+    const email = req.params.email
     // l'email ne peut pas être changé pour des raisons évidentes
     const changes = {
         username:req.body.username,
         password:req.body.password
     }
     try {
-        const user = await service.getOneById(id)
+        const user = await service.getOneByEmail(email)
         if (!user){
             return res.status(404).json({message:"user not found"})
         }
-        await service.update(id,changes)
+        await service.update(email,changes)
         return res.status(200).json("user updated")
 
     } catch (error) {
@@ -58,15 +58,16 @@ exports.update = async (req,res) => {
 }
 
 exports.delete = async (req,res) => {
-    const id = req.params.id
+    const email = req.params.email
     try {
-        const user = await service.getOneById(id)
+        const user = await service.getOneByEmail(email)
         if (!user){
             return res.status(404).json({message:"user not found"})
         }
-        await service.delete(id);
+        await service.delete(email);
         return res.status(204).json({})
     } catch (error) {
+        console.log(error)
         return res.status(500).json(error)
     }
 }
