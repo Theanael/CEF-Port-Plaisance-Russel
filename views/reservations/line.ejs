@@ -14,10 +14,14 @@
     <td>
         <%= reservation.endDate.toLocaleString() %>
     </td>
-    <td>
+    <% if (withActions) { %>
+      <td>
         <a href="reservations/<%= reservation._id %>/page">Modifier</a>
-    </td><td>
+    </td>
+    <td>
         <a href="reservations/<%= reservation._id %>/delete">Supprimer</a>
     </td>
+    <% } %>
+   
    
 </tr>

@@ -10,3 +10,32 @@ td,th{
 textarea{
   min-width: 400px;
 }
+
+body {
+    margin: 0;
+}
+
+header {
+    background: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    align-items: center;
+}
+
+main {
+    padding: 0 5%;
+}
+
+thead {
+    background: aliceblue;
+}
+
+div> label,div>span {
+    display: inline-block;
+    min-width: 120px;
+}
+
+form div {
+    padding: 5px 0px;
+}

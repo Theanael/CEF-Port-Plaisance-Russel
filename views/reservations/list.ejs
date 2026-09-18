@@ -12,13 +12,16 @@
     </thead>
     <tbody>
         <% reservations.forEach(reservation => { %>
-            <%- include('line',{reservation:reservation, withCatwayNumer:withCatwayNumer}) %>
+            <%- include('line',{reservation:reservation}) %>
         <% }) %>
+        
+        <% if (withActions) { %>
         <tr>
             <td colspan="2">
                 <a href="/catways/<%= catway._id %>/reservations/create">Créer une réservation</a>
             </td>
-    </tr>
+        </tr>
+        <% } %>
     </tbody>
         
 </table>

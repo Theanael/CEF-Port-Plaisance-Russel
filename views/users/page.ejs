@@ -4,20 +4,28 @@
         <title><%= user.username %></title>
         <link rel='stylesheet' href='/css/style.css' />
     </head>
-    <body>
-        <h2>Utilisateur : <%= user.username %></h2>
-        <div>Email : <%= user.email %></div>
-
-        <form action="/users/<%= user._id %>" method="POST">
-
-            <label for="username">Nom d'utilisateur</label>
-            <input type="text" name="username" id="username" value="<%= user.username %>"><br>
-
-            <label for="password">Mot de Passe</label>
-            <input type="password" name="password" id="password" value=""><br>
-            
-            <input type="submit" value="Modifier">
-
-        </form>
+    <body>        
+        <header>
+            <h1>Port de Plaisance Russel</h1>
+            <a href="/users/list">Retour</a>
+        </header>
+        <main>
+            <h2>Utilisateur : <%= user.username %></h2>
+            <div>Email : <%= user.email %></div>
+            <form action="/users/<%= user.email %>" method="POST">
+                <div>
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" value="<%= user.username %>">
+                </div>
+                <div>
+                    <label for="password">Mot de Passe</label>
+                    <input type="password" name="password" id="password" autocomplete="new-password">
+                    <!-- auto-complete="new-password" empêche chrome de pré-remplir avec le mot de passe enregistré -->
+                </div>
+                
+                <input type="submit" value="Modifier">
+                
+            </form>
+        </main>
     </body>
-  </html>
+</html>

@@ -5,19 +5,31 @@
         <link rel='stylesheet' href='/css/style.css' />
     </head>
     <body>
-        <form action="/catways/add" method="POST">
-            <label for="catwayNumber">Numéro</label>
-            <input type="text" name="catwayNumber" id="catwayNumber"><br>
-            <label for="catwayType">Type</label>
-            <select name="catwayType" id="catwayType">
-                <option value=""></option>
-                <option value="short">Court</option>
-                <option value="long">Long</option>
-            </select><br>
-            <label for="catwayState">Etat</label><br>
-            <textarea name="catwayState" id="catwayState"></textarea>
-            <br>
-            <input type="submit" value="Créer">
-        </form>
+        <header>
+            <h1>Port de Plaisance Russel</h1>
+            <a href="/users/list">Retour</a>
+        </header>
+        <main>
+            <h2>Nouveau Catway</h2>
+            <form action="/catways/add" method="POST">
+                <div>
+                    <label for="catwayNumber">Numéro</label>
+                <input type="text" name="catwayNumber" id="catwayNumber">
+                </div>
+                <div>
+                    <label for="catwayType">Type</label>
+                    <select name="catwayType" id="catwayType">
+                        <option value=""></option>
+                        <option value="short">Court</option>
+                        <option value="long">Long</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="catwayState">Etat</label>
+                    <textarea name="catwayState" id="catwayState"></textarea>
+                </div>
+                <input type="submit" value="Créer">
+            </form>
+        </main>
     </body>
   </html>
