@@ -6,12 +6,16 @@
     "start": "env-cmd -f ./env/.env nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cookie-parser": "~1.4.4",
+    "cookie-session": "^2.1.1",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "env-cmd": "^11.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }

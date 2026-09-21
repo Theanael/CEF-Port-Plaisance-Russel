@@ -29,11 +29,15 @@
                     <span>Période : </span>
                     <span>
                         <label for="startDate">Du :</label>
-                        <input type="datetime-local" name="startDate" id="startDate" value="<%= new Date(reservation.startDate).toISOString().substring(0,19) %>">
+                        <input type="datetime-local" name="startDate" id="startDate" 
+                        value="<%= new Date(reservation.startDate).getFullYear() %>-<%= String(new Date(reservation.startDate).getMonth() + 1).padStart(2, '0') %>-<%= String(new Date(reservation.startDate).getDate()).padStart(2, '0') %>T<%= String(new Date(reservation.startDate).getHours()).padStart(2, '0') %>:<%= String(new Date(reservation.startDate).getMinutes()).padStart(2, '0') %>"
+                        >
                     </span>
                     <span>
                         <label for="endDate">Au :</label>
-                        <input type="datetime-local" name="endDate" id="endDate" value="<%= new Date(reservation.endDate).toISOString().substring(0,19) %>">
+                        <input type="datetime-local" name="endDate" id="endDate"
+                        value="<%= new Date(reservation.endDate).getFullYear() %>-<%= String(new Date(reservation.endDate).getMonth() + 1).padStart(2, '0') %>-<%= String(new Date(reservation.endDate).getDate()).padStart(2, '0') %>T<%= String(new Date(reservation.endDate).getHours()).padStart(2, '0') %>:<%= String(new Date(reservation.endDate).getMinutes()).padStart(2, '0') %>"
+                        >
                     </span>
                 </div>
                 <input type="submit" value="Modifier">
