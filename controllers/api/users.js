@@ -92,7 +92,7 @@ exports.login = async (req,res) => {
 
     try {
         // on vérifie la validité du login
-        const user = service.authenticate(email,password);
+        const user = await service.authenticate(email,password);
 
         // on crée un token contennant l'utilisateur
         const token = jwt.sign(
@@ -101,9 +101,11 @@ exports.login = async (req,res) => {
             {expiresIn: '24h'}
         );
 
-        // on ajoute le token au header avant de le retourner le succès de l'authentification.
-        res.header('Authorization','Bearer '+token);
-        return res.status(200).json('authenticate_succed');
+        //  on retourne le succès de l'authentification.
+        return res.status(200).json({
+            message:'authenticate_succed',
+            token:token
+        });
     } catch (error) {
         return res.render('error',{message:error.message,error:error});
     };

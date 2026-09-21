@@ -74,7 +74,7 @@ exports.delete = async (req,res) => {
         
         // on le supprime puis on indique le succès de l'opération.
         await service.delete(id);
-        return res.status(204);
+        return res.status(204).json('');
     } catch (error) {
         return res.status(500).json(error);
     };
